@@ -2,9 +2,6 @@ package org.flyve.mdm.agent.policies;
 
 import android.content.Context;
 
-import org.flyve.mdm.agent.services.PoliciesConnectivity;
-import org.flyve.mdm.agent.utils.FlyveLog;
-
 /*
  *   Copyright  2018 Teclib. All rights reserved.
  *
@@ -23,7 +20,7 @@ import org.flyve.mdm.agent.utils.FlyveLog;
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * ------------------------------------------------------------------------------
- * @author    rafael hernandez
+ * @author    Rafael Hernandez
  * @date      15/5/18
  * @copyright Copyright  2018 Teclib. All rights reserved.
  * @license   GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
@@ -32,23 +29,16 @@ import org.flyve.mdm.agent.utils.FlyveLog;
  * ------------------------------------------------------------------------------
  */
 
-public class NFCPolicy extends BasePolicies {
+public class InventoryPolicy extends BasePolicies {
 
-    public static final String POLICY_NAME = "disableNFC";
+    public static final String POLICY_NAME = "periodicInventory";
 
-    public NFCPolicy(Context context) {
+    public InventoryPolicy(Context context) {
         super(context, POLICY_NAME);
     }
 
     @Override
     protected boolean process() {
-        try {
-            boolean disable = Boolean.parseBoolean(this.policyValue.toString());
-            PoliciesConnectivity.disableNFC(disable);
-            return true;
-        } catch (Exception ex) {
-            FlyveLog.e(ex.getMessage());
-            return false;
-        }
+        return true;
     }
 }
